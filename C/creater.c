@@ -63,10 +63,10 @@ void printSpell(FILE* fp, int resource, int type, int count)
 	/* Name,Type, Resource, Health, Attack, Death, Spell_Type */
 
 	/* Name */
-	fputs(spell_names[count], fp);
+	fprintf(fp, "%s,", spell_names[count]);
 
 	/* Type*/
-	fputs("1,", fp);
+	fprintf(fp, "%d,", 1);
 
 	/* Resource */
 	fprintf(fp,"%d," , resource);
