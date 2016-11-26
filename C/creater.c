@@ -8,7 +8,10 @@ const char* attr[] = {"Cowardly", "Punished", "Sleepy", "Adventurous", "Spirited
 const char* hero_names[] = {"Baguette", "SpongeBob", "Tobby Ran", "McAdoodle", "Harambe", "S4cr1f1c3", "Gab3n", "Pimone Serault", "Wim Tertz", "Seymour", 
 "Pylons?", "Lericles Pewis", "Zamboni", "Beaver", "Chaurice Mah Jong", "Call of Duty Man", "xXx_n0Sc0p3_xXx", "BlazeIt420", "John Cena", "Hackquinas Hodor", NULL}; 
 
+/* 10 Spells in total*/
+const char* spell_names[] = {"Computer Virus", "Elite Hacks", "Lizard Squad", "N0SC0P3", "Email Server", "Iluminati","D*cks Out","Dank Kush",  "Doritos", "Mountain Dew"};
 
+/*
 void createCreatureName()
 {
 	int length = arrLength(hero_names);
@@ -24,64 +27,103 @@ void createCreatureName()
 
 	free(x);
 }
+*/
 
-/* Death number tells us both its cost and what kind of effect it'll have*/
-creature* createCreature(int resource, int death)
+void printCreature(creature* curr, FILE* fp, int count)
 {
-	creature* temp;
-	int stat = 2* resource + 1 - death;
-	int attack = randr(1, stat - 1);
+	/* Name,Type, Resource, Health, Attack, Death, Spell_Type */
 
-	temp = (creature *)malloc(sizeof(creature));
+	/* Name */
+	fputs(hero_names[count], fp);
+	fputs(" the ", fp);
+	fputs(attr[count%10], fp);
+	fputs(",", fp);
 
-	temp->type = 0;
-	temp->resource = resource; 
-	temp -> death = death;
-	temp -> next = NULL;
-	temp -> attack = attack;
-	temp -> health = stat - attack;
+	/* Type*/
+	fputs("0,", fp);
 
+	/* Resource */
+	fprintf(fp,"%d," , curr->resource);
 
+	/* Health*/
+	fprintf(fp,"%d," , curr->health);
 
-	/* stat points are 2x + 1 resource */
-	return temp;
+	/* Attack*/
+	fprintf(fp,"%d," , curr->attack);
+
+	/* Death*/
+	fprintf(fp,"%d," , curr->death);
+
+	/* Spell_Type*/
+	fputs("-1, \n", fp);
 }
 
-creature* appendCreature(creature* head, int resource, int death)
-{
-	creature* LAST = createCreature(resource, death);
-	creature* temp;
+void printSpell(FILE* fp, int resource, int type, int count)
+{	
+	/* Name,Type, Resource, Health, Attack, Death, Spell_Type */
 
-	if (head == NULL)
-	{
-		head = LAST;
-	}
-	else
-	{
-		temp = head;
+	/* Name */
+	fputs(spell_names[count], fp);
 
-		while(temp -> next)
-		{
-			temp = temp->next;
-		}
-		temp->next = LAST;
-	}
-	return (head);
+	/* Type*/
+	fputs("1,", fp);
+
+	/* Resource */
+	fprintf(fp,"%d," , resource);
+
+	/* Health*/
+	fputs("-1,", fp);
+
+	/* Attack*/
+	fputs("-1,", fp);
+
+	/* Death*/
+	fputs("-1,", fp);
+
+	/* Spell_Type*/
+	fprintf(fp,"%d, \n" ,type);
 }
 
-void printCreatures(creature* head, FILE* fp)
+void printCreatureDeck(creature* head, FILE* fp)
 {
+	int length = arrLength(hero_names);
+	creature* temp;
+	int* x = arrShuffle(length); 
+	int i;
+	
+	temp = head;
+	/* Each count will be some value of x[i]*/
 
+	for (i = 0; i < length - 1; i++)
+	{
+		printCreature(temp, fp, x[i]);
+		temp = temp->next;
+	}
+
+	freeCreature(head);
+	free(x);
 }
 
-void freeCreature(creature* head)
+void printSpellDeck(FILE* fp)
 {
-	creature* temp;
-
-	while ((temp = head) != NULL)
+	int i;
+	int count = 0;
+	/* Damage to enemy minions*/
+	for (i = 0; i < 3; ++i)
 	{
-		head = head -> next;
-		free(temp);
+		printSpell(fp, randr(1,10), 0, count);
+		count++;
 	}
-	head = NULL;
+	/* Damage to enemey hero*/
+	for (i = 0; i < 4; ++i)
+	{
+		printSpell(fp, randr(1,10), 1, count);
+		count++;
+	}
+	/* healing spells (only for creatures*/
+	for (i = 0; i < 3; ++i)
+	{
+		printSpell(fp, randr(1,10), 2, count);
+		count++;
+	}
 }
