@@ -20,14 +20,23 @@ typedef struct creature {
 	int resource; 
 	int health;
 	int attack;
+	int death;
+	struct creature * next;
 } creature;
 
 int randr(int min, int max);
 int arrLength (const char* arr[]);
+int* arrShuffle(int size);
 
 void createSpellName();
 
 void createCreatureName();
 
-spell* createCreature();
+creature* createCreature(int resource, int death);
+creature* appendCreature(creature* head, int resource, int death);
+creature* createCreatureList();
+
+void printCreatures(creature* head, FILE* fp);
+void freeCreature(creature* head);
+
 #endif
