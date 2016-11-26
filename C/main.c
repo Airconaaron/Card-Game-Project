@@ -11,7 +11,14 @@ int main(int argc, char const *argv[])
 
 	srand(time(NULL));
 	
+
 	fp = fopen("deck.csv", "w");
+	if (fp == NULL)
+	{
+		fclose(fp);
+		printf("Couldn't create the file\n");
+		return -1;
+	}
 
 	/* Type will be 1/0. Spell or Creature*/
 	/* Resource will be from 1- 10 */
