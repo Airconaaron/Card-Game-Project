@@ -94,7 +94,7 @@ void printCreatureDeck(creature* head, FILE* fp)
 	temp = head;
 	/* Each count will be some value of x[i]*/
 
-	for (i = 0; i < length - 1; i++)
+	for (i = 0; i < length; i++)
 	{
 		printCreature(temp, fp, x[i]);
 		temp = temp->next;

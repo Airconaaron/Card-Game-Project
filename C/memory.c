@@ -33,6 +33,7 @@ creature* createCreature(int resource, int death)
 	return temp;
 }
 
+/* Linked List of creatures*/
 creature* appendCreature(creature* head, int resource, int death)
 {
 	creature* LAST = createCreature(resource, death);
@@ -55,6 +56,7 @@ creature* appendCreature(creature* head, int resource, int death)
 	return (head);
 }
 
+/* Randomly decided how many low and mid tiered cards there will be. Then leave the rest to be high*/
 creature* createCreatureList()
 {
 	creature* head = NULL;

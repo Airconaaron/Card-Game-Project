@@ -23,9 +23,9 @@ int main(int argc, char const *argv[])
 	/* Type will be 1/0. Spell or Creature*/
 	/* Resource will be from 1- 10 */
 	/* Health and attack is split 2x + 1 stat points randomly */ 
-	/* Death specifies whether the creature has special death effects 0, 2 or 3*/
+	/* Death specifies whether the creature has special death effects 0, 2 or 3. Handy as these will be the stat points they take out*/
 	/* Spell types. 0 = attack creature spell, 1 = attack hero, 2 = healing spells (can any creature and some classes of heroes) */
-	fputs("Name,Type, Resource, Health, Attack, Death, Spell_Type, \n", fp);
+	/*fputs("Name,Type, Resource, Health, Attack, Death, Spell_Type, \n", fp);  we don't need this anymore*/
 
 	/* hence the first 30 cards will bleong to player 1*/
 	head = createCreatureList();

@@ -1,0 +1,32 @@
+import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+/**
+ *
+ * @author user
+ */
+public class FileReader {
+    public static void ReadFile()
+    {
+        String file = "../C/deck.csv";
+        String line = "";
+        String csvSplit = ",";
+        
+        try(BufferedReader br = new BufferedReader(new FileReader(file))) {
+            
+            while ((line = br.readLine()) != null) {
+
+                // use comma as separator
+                String[] stuff = line.split(csvSplit);
+
+                System.out.println("hai");
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
