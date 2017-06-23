@@ -16,11 +16,12 @@ Power: Able to deal 2 damage to opposing heroes directly at a cost of 2 resource
 # Instruction
 
 # C
-Use the command "make" to compile the C stuff and ./deck to execute. This will create a csv file with all the required deck items. 
+Use the provided makefile and run
+``` "make"``` to compile the C stuff and ```./deck``` to execute. This will create a csv file with all the required deck items. 
 
 # Java
 
-Simply run the .jar file found in dist and you should be fine. 
+Simply run the .jar file found in NotStone/dist and you should be fine. 
 
 # Playing
 
