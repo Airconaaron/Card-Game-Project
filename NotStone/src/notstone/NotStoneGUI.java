@@ -15,8 +15,10 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Color;
 
+
 import java.io.*;
 import java.io.IOException;
+import java.lang.Object;
 
 import deck.*;
 import game.*;
@@ -100,7 +102,9 @@ public class NotStoneGUI extends JFrame{
         this.playerSpace.add(this.playerDeck, BorderLayout.PAGE_START);
         
         //Resizes the images
-        ImageIcon DEFAULT = new ImageIcon(new ImageIcon("../Images/Hero_Icon_Default.png").getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
+        //String s = this.class.getResource("/test.jpg");
+        //System.out.print(NotStone.class.getResource("/Hero_Icon_Default.png"));
+        ImageIcon DEFAULT = new ImageIcon(new ImageIcon(NotStone.class.getResource("/Hero_Icon_Default.png")).getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
         
         //Since the player hasn't chosen a hero yet make them blank cards first
         this.heroIcon = new JLabel(DEFAULT, JLabel.CENTER);
@@ -220,7 +224,7 @@ public class NotStoneGUI extends JFrame{
         if (this.game.getPlayer().getSpecial() == 0)
         {
             // If he is PCMR
-             ImageIcon PCMR = new ImageIcon(new ImageIcon("../Images/Hero_Icon_PCMR.png").getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
+             ImageIcon PCMR = new ImageIcon(new ImageIcon(NotStone.class.getResource("/Hero_Icon_PCMR.png")).getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
             
             String startOption[] = {"Yes", "No"};
 		int value = JOptionPane.showOptionDialog(null, "Do you want to heal yourself at a cost of 2 resources?", "Special Ability", 
@@ -250,7 +254,7 @@ public class NotStoneGUI extends JFrame{
         }
         else
         {
-            ImageIcon Peasant = new ImageIcon(new ImageIcon("../Images/Hero_Icon_Pesant.png").getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
+            ImageIcon Peasant = new ImageIcon(new ImageIcon(NotStone.class.getResource("/Hero_Icon_Pesant.png")).getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
             
                 String startOption[] = {"Yes", "No"};
 		int value = JOptionPane.showOptionDialog(null, "Do you want to damage your opponent at a cost of 2 resources?", "Special Ability", 
@@ -613,8 +617,8 @@ public class NotStoneGUI extends JFrame{
     {
         String startOption[] = {"Console Peasant", "PCMR"};
         int val = -1;
-        ImageIcon Peasant = new ImageIcon(new ImageIcon("../Images/Hero_Icon_Peasant.png").getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
-        ImageIcon PCMR = new ImageIcon(new ImageIcon("../Images/Hero_Icon_PCMR.png").getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
+        ImageIcon Peasant = new ImageIcon(new ImageIcon(NotStone.class.getResource("/Hero_Icon_Peasant.png")).getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
+        ImageIcon PCMR = new ImageIcon(new ImageIcon(NotStone.class.getResource("/Hero_Icon_PCMR.png")).getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
         
         int value = JOptionPane.showOptionDialog(this, 
                 new JLabel("Choose a hero", Peasant, JLabel.LEFT), 

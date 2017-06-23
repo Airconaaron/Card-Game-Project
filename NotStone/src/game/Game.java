@@ -11,6 +11,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import notstone.*;
 
+import java.net.*;
+import java.io.*;
+
 /**
  *
  * @author user
@@ -136,22 +139,27 @@ public class Game {
         
     }
     
-    public static String imageMatch(Card _card)
+    public static URL imageMatch(Card _card)
     {
-        String returner = "";
+        URL returner = null;
+        
         String name = _card.getName();
         
         String stuff[] = name.split(" the ");
         
+        //String s = NotStone.class.getResource("/Creatures");
+        
         if (_card instanceof Creature)
         {
-            returner = "../Images/Creatures/" + stuff[0] + ".jpg";
+            returner = NotStone.class.getResource("/Creatures/" + stuff[0] + ".jpg");
         }
         else if (_card instanceof Spell)
         {
-            returner = "../Images/Spells/" + stuff[0] + ".jpg";
+            returner = NotStone.class.getResource("/Spells/" + stuff[0] + ".jpg");
         }
+      
         return returner;
+
     }
     
 }
