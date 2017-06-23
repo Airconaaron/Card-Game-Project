@@ -224,7 +224,8 @@ public class NotStoneGUI extends JFrame{
         if (this.game.getPlayer().getSpecial() == 0)
         {
             // If he is PCMR
-             ImageIcon PCMR = new ImageIcon(new ImageIcon(NotStone.class.getResource("/Hero_Icon_PCMR.png")).getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
+            //NotStone.class.getResource("/Hero_Icon_Default.png")
+            ImageIcon PCMR = new ImageIcon(new ImageIcon(NotStone.class.getResource("/Hero_Icon_PCMR.png")).getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
             
             String startOption[] = {"Yes", "No"};
 		int value = JOptionPane.showOptionDialog(null, "Do you want to heal yourself at a cost of 2 resources?", "Special Ability", 

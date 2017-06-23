@@ -1,0 +1,10 @@
+nullOpponent usedPylons? the CowardlyOpponent usedPylons? the CowardlyTURN4Player HP :24Opponent HP: Hero 
+Name: PCMR
+HP: 30
+Opponent usedPylons? the CowardlyTURN5Player HP :18Opponent HP: Hero 
+Name: PCMR
+HP: 30
+Opponent usedPylons? the CowardlyTURN6Player HP :10Opponent HP: Hero 
+Name: PCMR
+HP: 30
+Opponent usedPylons? the Cowardly
