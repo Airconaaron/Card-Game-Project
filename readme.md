@@ -1,4 +1,5 @@
-## Readme
+# Screenshot
+![Screenshot](https://github.com/Airconaaron/Card-Game-Project/blob/master/Images/Game_Screenshot.png)
 
 # Introduction
 This game has two characters. 
